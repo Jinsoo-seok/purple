@@ -1,8 +1,8 @@
 package com.purple;
 
+import com.purple.requiredTest.plusMinus;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.io.UnsupportedEncodingException;
 
 import static java.lang.Integer.parseInt;
 
@@ -10,8 +10,9 @@ import static java.lang.Integer.parseInt;
 public class PurpleApplication {
 
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-//        SpringApplication.run(PurpleApplication.class, args);
+//        long startTime = System.currentTimeMillis();
+
+        SpringApplication.run(PurpleApplication.class, args);
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // 1.
@@ -63,19 +64,20 @@ public class PurpleApplication {
 //        String temp9 = autoNewlineProc.autoNewlineProc(text);
 //        System.out.println("temp = \n" + temp9);
 
+
         ///////////////////////////////////////////////////////////////////////////////////////
         // 5. 좀 이상한듯?
-        int num = 98;
-
-        System.out.println("plusMinus = " + plusMinus.plusMinus(num));
+//        int num = 98;
+//
+//        System.out.println("plusMinus = " + plusMinus.plusMinus(num));
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
-        long endTime = System.currentTimeMillis();
-        System.out.println("start Time = " + startTime);
-        System.out.println("end Time = " + endTime);
-        long procTime = endTime-startTime;
-        System.out.println("proc Time = " + (endTime - startTime));
+//        long endTime = System.currentTimeMillis();
+//        System.out.println("start Time = " + startTime);
+//        System.out.println("end Time = " + endTime);
+//        long procTime = endTime-startTime;
+//        System.out.println("proc Time = " + (endTime - startTime));
     }
 
 

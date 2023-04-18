@@ -1,4 +1,4 @@
-package com.purple;
+package com.purple.requiredTest;
 
 public class autoNewlineProc {
 
