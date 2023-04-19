@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oembed Test Site</title>
+</head>
+<link rel="stylesheet" href="../static/css/home.css" type="text/css" />
+<!--<script type="text/javascript" src="/static/js/home.js" ></script>-->
+<body>
+<div class="container">
+    <header>
+        <div id="title">oEmbed Test</div>
+
+        <div id="content_wrap">
+            <li th:if="${json.title} != null">
+                <div>title</div>
+                <div th:text="${json.title}"></div>
+            </li>
+            <li th:if="${json.type} != null">
+                <div>type</div>
+                <div th:text="${json.type}"></div>
+            </li>
+        </div>
+
+    </header>
+    <article>
+        <div id="content_wrap">
+            <div id="title_container"></div>
+            <ul id="responseDataInContainer"></ul>
+        </div>
+    </article>
+</div>
+<!-- /container -->
+</body>
+</html>

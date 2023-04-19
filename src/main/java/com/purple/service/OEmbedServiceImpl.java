@@ -1,5 +1,8 @@
 package com.purple.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.purple.dto.VideoDTO;
 import com.purple.util.ResponseCode;
 import com.purple.util.nameUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -17,19 +20,30 @@ import java.util.Map;
 public class OEmbedServiceImpl implements OEmbedService {
 
     @Override
-    public Map<String, Object> getOEmbedInfo(Map<String, Object> param) {
+    public VideoDTO getOEmbedInfo(Map<String, Object> param) {
         Map<String, Object> responseMap = new HashMap<>();
-        Map<String, Object> paramMap = new HashMap<>();
-
-
         ResponseEntity<Map> responseEntity = useWebClient(param);
+        VideoDTO videoDTO = new VideoDTO();
 
-        responseMap.put("data", responseEntity.getBody());
-        responseMap.put("code", ResponseCode.SUCCESS.getCode());
-        responseMap.put("message", ResponseCode.SUCCESS.getMessage());
+        if(responseEntity.getStatusCodeValue() == ResponseCode.SUCCESS.getCode()){
+
+            responseMap = responseEntity.getBody();
 
 
-        return responseMap;
+            ObjectMapper mapper = new ObjectMapper();
+
+            try {
+                String mapperJson = mapper.writeValueAsString(responseMap);
+                videoDTO = mapper.readValue(mapperJson, VideoDTO.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+
+            log.info("test = {}", responseEntity.getBody().toString());
+        }
+
+
+        return videoDTO;
     }
 
     public ResponseEntity<Map> useWebClient (Map<String, Object> param){
@@ -65,17 +79,5 @@ public class OEmbedServiceImpl implements OEmbedService {
                     .block();
         }
         return response;
-    }
-
-
-    public String urlUtils (String type){
-
-        String result = null;
-
-        if(type.equals(nameUtils.YOUTUBE.getCodeName())){
-            result = nameUtils.YOUTUBE.getUrl();
-        }
-
-        return result;
     }
 }

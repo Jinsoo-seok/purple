@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oembed Test Site</title>
+</head>
+<link rel="stylesheet" href="../static/css/home.css" type="text/css" />
+<script type="text/javascript" src="../static/js/home.js" ></script>
+<body>
+<div class="container">
+    <header>
+        <div id="title">oEmbed Test</div>
+
+        <div id="input_Box">
+            <form th:action="@{/api/oEmbed}" method="get">
+                <input id="urlText" type="text" placeholder="type" name="type" th:value="${type}">
+                <input type="text" placeholder="id" name="id" th:value="${id}">
+                <button type="submit">Embed</button>
+            </form>
+        </div>
+
+    </header>
+    <article>
+        <div id="content_wrap">
+            <div id="title_container">
+                <div th:if="${json.title != null}">
+                    <h1 th:text="${json.title}"></h1>
+                </div>
+            </div>
+            <ul id="responseDataInContainer">
+                <li th:if="${json.type} != null">
+                    <div>type</div>
+                    <div th:text="${json.type}"></div>
+                </li>
+                <li th:if="${json.version} != null">
+                    <div>version</div>
+                    <div th:text="${json.version}"></div>
+                </li>
+                <li th:if="${json.provider_name} != null">
+                    <div>provider_name</div>
+                    <div th:text="${json.provider_name}"></div>
+                </li>
+                <li th:if="${json.provider_url} != null">
+                    <div>provider_url</div>
+                    <div th:text="${json.provider_url}"></div>
+                </li>
+                <li th:if="${json.author_name} != null">
+                    <div>author_name</div>
+                    <div th:text="${json.author_name}"></div>
+                </li>
+                <li th:if="${json.author_url} != null">
+                    <div>author_url</div>
+                    <div th:text="${json.author_url}"></div>
+                </li>
+                <li th:if="${json.is_plus} != null">
+                    <div>is_plus</div>
+                    <div th:text="${json.is_plus}"></div>
+                </li>
+                <li th:if="${json.html} != null">
+                    <div>html</div>
+                    <div th:text="${json.html}"></div>
+                </li>
+                <li th:if="${json.width} != null">
+                    <div>width</div>
+                    <div th:text="${json.width}"></div>
+                </li>
+                <li th:if="${json.height} != null">
+                    <div>height</div>
+                    <div th:text="${json.height}"></div>
+                </li>
+                <li th:if="${json.duration} != null">
+                    <div>duration</div>
+                    <div th:text="${json.duration}"></div>
+                </li>
+                <li th:if="${json.thumbnail_url} != null">
+                    <div>thumbnail_url</div>
+                    <div th:text="${json.thumbnail_url}"></div>
+                </li>
+                <li th:if="${json.thumbnail_width} != null">
+                    <div>thumbnail_width</div>
+                    <div th:text="${json.thumbnail_width}"></div>
+                </li>
+                <li th:if="${json.thumbnail_height} != null">
+                    <div>thumbnail_height</div>
+                    <div th:text="${json.thumbnail_height}"></div>
+                </li>
+                <li th:if="${json.thumbnail_url_with_play_button} != null">
+                    <div>thumbnail_url_with_play_button</div>
+                    <div th:text="${json.thumbnail_url_with_play_button}"></div>
+                </li>
+                <li th:if="${json.upload_date} != null">
+                    <div>upload_date</div>
+                    <div th:text="${json.upload_date}"></div>
+                </li>
+                <li th:if="${json.video_id} != null">
+                    <div>video_id</div>
+                    <div th:text="${json.video_id}"></div>
+                </li>
+                <li th:if="${json.uri} != null">
+                    <div>uri</div>
+                    <div th:text="${json.uri}"></div>
+                </li>
+                <li th:if="${json.url} != null">
+                    <div>url</div>
+                    <div th:text="${json.url}"></div>
+                </li>
+            </ul>
+        </div>
+    </article>
+</div>
+<!-- /container -->
+</body>
+</html>
